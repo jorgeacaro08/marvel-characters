@@ -17,5 +17,14 @@ services:
       interval: 5s
       timeout: 5s
       retries: 10
+  api:
+    build: ./api
+    ports: ["3000:3000"]
+    environment:
+      PGHOST: postgres
+      PGUSER: marvel
+      PGPASSWORD: marvel123
+      PGDATABASE: marvel_db
+    depends_on: [postgres]
 volumes:
   marvel_data:
